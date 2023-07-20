@@ -32,7 +32,7 @@ npm install --save mutasi-scraper
 atau
 
 ```bash
-npm install https://github.com/fdciabdul/mutasi-Scraper
+npm install https://github.com/roywikan/mutasi-scraper
 ```
 
 
@@ -67,29 +67,28 @@ npm run example
 
 ```javascript
 
-const {ScrapBCA} = require('mutasi-scraper');
+const { ScrapBCA } = require("mutasi-scraper");
 
-const user = 'USER';
-const pass = 'PASS';
 
-const scraper = new ScrapBCA(user, pass, {
-  headless: false, // true if needed
-  args: [
-    '--log-level=3', 
-    '--no-default-browser-check',
-    '--disable-infobars',
-    '--disable-web-security',
-    '--disable-site-isolation-trials',
-  ],
- // executablePath: 'google-chrome', path google chrome  (uncomment line ini jika tidak diperlukan)  tapi direkomendasikan menggunakan google chrome 
-});
-  const tglawal = "1 "; // tanggal 1
-  const blnawal = "4"; // bulan 4
-  const tglakhir = "30"; //ke tanggal 30
-  const blnakhir = "4 "; // bulan 4
-
-  var result = await scraper.getStatement(tglawal, blnawal, tglakhir, blnakhir);
-  console.log(result);
+(async () => {
+    
+    const user = 'USERNAME00'; //BCA USERNAME
+    const pass = '123456'; //BCA PIN
+    
+    
+    const tglawal = "01";  // TANGGAL AWAL : 01-09 ATAU 11-31, tanpa spasi
+    const blnawal = "7";   // BULAN AWAL : 1-9 ATAU 10-12, tanpa spasi
+    const tglakhir = "20"; // TANGGAL AKHIR : 01-09 ATAU 11-31, tanpa spasi
+    const blnakhir = "7";  // BULAN AKHIR : 1-9 ATAU 10-12, tanpa spasi
+  
+  
+    const bca = new ScrapBCA(user, pass);
+    const result = await bca.getStatement(tglawal,blnawal,tglakhir,blnakhir);
+    console.log(result);
+    
+    // Explicitly terminate the script
+    process.exit();
+})();
 ```
 ## BNI
 
